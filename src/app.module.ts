@@ -4,8 +4,9 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { env } from "./env";
 import { ManufacturersModule } from "./manufacturers/manufacturers.module";
+import { MotorcyclesModule } from "./motorcycles/motorcycles.module";
+import { StoresModule } from "./stores/stores.module";
 import { VehiclesModule } from "./vehicles/vehicles.module";
-import { MotorcyclesModule } from './motorcycles/motorcycles.module';
 
 @Module({
     imports: [
@@ -21,6 +22,7 @@ import { MotorcyclesModule } from './motorcycles/motorcycles.module';
         ManufacturersModule,
         VehiclesModule,
         MotorcyclesModule,
+        StoresModule,
     ],
     controllers: [AppController],
     providers: [AppService],

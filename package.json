@@ -33,6 +33,7 @@
         "zod": "^3.22.2"
     },
     "devDependencies": {
+        "@cloudflare/workers-types": "^4.20230814.0",
         "@nestjs/cli": "^10.0.0",
         "@nestjs/schematics": "^10.0.0",
         "@nestjs/testing": "^10.0.0",

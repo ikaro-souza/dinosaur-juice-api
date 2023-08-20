@@ -40,6 +40,9 @@ dependencies:
     version: 3.22.2
 
 devDependencies:
+  '@cloudflare/workers-types':
+    specifier: ^4.20230814.0
+    version: 4.20230814.0
   '@nestjs/cli':
     specifier: ^10.0.0
     version: 10.0.0
@@ -498,6 +501,10 @@ packages:
 
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
+    dev: true
+
+  /@cloudflare/workers-types@4.20230814.0:
+    resolution: {integrity: sha512-+jHiGjZg2UpULZSSHmHLqUG45TLg1s+uppSMlGvMn0u/xyFsRX9HX6b8Ydg/oHSp3jfSuPtX05GSvtgRAmrWTg==}
     dev: true
 
   /@colors/colors@1.5.0:

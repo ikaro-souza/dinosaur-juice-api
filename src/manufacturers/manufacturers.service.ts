@@ -1,9 +1,10 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import { type VehicleType } from "src/vehicles/entities/vehicle.entity";
 import { Repository } from "typeorm";
 import { CreateManufacturerDto } from "./dto/create-manufacturer.dto";
 import { UpdateManufacturerDto } from "./dto/update-manufacturer.dto";
-import { Manufacturer, VehicleType } from "./entities/manufacturer.entity";
+import { Manufacturer } from "./entities/manufacturer.entity";
 
 @Injectable()
 export class ManufacturersService {

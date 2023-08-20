@@ -4,10 +4,10 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { env } from "./env";
 import { ManufacturersModule } from "./manufacturers/manufacturers.module";
+import { VehiclesModule } from "./vehicles/vehicles.module";
 
 @Module({
     imports: [
-        ManufacturersModule,
         TypeOrmModule.forRoot({
             type: "postgres",
             host: env.DB_HOST,
@@ -15,9 +15,10 @@ import { ManufacturersModule } from "./manufacturers/manufacturers.module";
             username: env.DB_USER,
             password: env.DB_PASSWORD,
             database: env.DB_NAME,
-            logger: "simple-console",
             autoLoadEntities: true,
         }),
+        ManufacturersModule,
+        VehiclesModule,
     ],
     controllers: [AppController],
     providers: [AppService],

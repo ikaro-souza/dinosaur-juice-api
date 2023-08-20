@@ -9,9 +9,9 @@ import {
     Query,
 } from "@nestjs/common";
 import { FILTERS } from "src/constants";
+import { type VehicleType } from "src/vehicles/entities/vehicle.entity";
 import { CreateManufacturerDto } from "./dto/create-manufacturer.dto";
 import { UpdateManufacturerDto } from "./dto/update-manufacturer.dto";
-import { VehicleType } from "./entities/manufacturer.entity";
 import { ManufacturersService } from "./manufacturers.service";
 
 @Controller("manufacturers")

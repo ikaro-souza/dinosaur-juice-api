@@ -1,8 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { z } from "zod";
-
-export const vehicleTypes = z.enum(["car", "motorcycle"]);
-export type VehicleType = z.infer<typeof vehicleTypes>;
+import {
+    Vehicle,
+    vehicleTypes,
+    type VehicleType,
+} from "src/vehicles/entities/vehicle.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: "manufacturers" })
 export class Manufacturer {
@@ -25,7 +26,10 @@ export class Manufacturer {
     logo_url: string;
 
     @Column("enum", {
-        enum: [vehicleTypes.Enum.car, vehicleTypes.Enum.motorcycle],
+        enum: [vehicleTypes._def.values],
     })
-    vehicle_type: string;
+    vehicle_type: VehicleType;
+
+    @OneToMany(() => Vehicle, (vehicle) => vehicle.manufacturer)
+    vehicles: Vehicle[];
 }

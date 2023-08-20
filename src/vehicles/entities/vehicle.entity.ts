@@ -50,6 +50,9 @@ export class Vehicle {
     @Column("smallint")
     model: number;
 
+    @Column("decimal", { precision: 2, scale: 2 })
+    displacement: number;
+
     @Column("enum", { enum: injections })
     injection_type: InjectionType;
 

@@ -5,6 +5,7 @@ import { AppService } from "./app.service";
 import { env } from "./env";
 import { ManufacturersModule } from "./manufacturers/manufacturers.module";
 import { VehiclesModule } from "./vehicles/vehicles.module";
+import { MotorcyclesModule } from './motorcycles/motorcycles.module';
 
 @Module({
     imports: [
@@ -19,6 +20,7 @@ import { VehiclesModule } from "./vehicles/vehicles.module";
         }),
         ManufacturersModule,
         VehiclesModule,
+        MotorcyclesModule,
     ],
     controllers: [AppController],
     providers: [AppService],

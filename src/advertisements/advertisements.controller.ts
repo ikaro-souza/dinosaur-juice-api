@@ -1,11 +1,11 @@
 import {
-    Controller,
-    Get,
-    Post,
     Body,
-    Patch,
-    Param,
+    Controller,
     Delete,
+    Get,
+    Param,
+    Patch,
+    Post,
 } from "@nestjs/common";
 import { AdvertisementsService } from "./advertisements.service";
 import { CreateAdvertisementDto } from "./dto/create-advertisement.dto";
@@ -30,6 +30,11 @@ export class AdvertisementsController {
     @Get(":id")
     findOne(@Param("id") id: string) {
         return this.advertisementsService.findOne(+id);
+    }
+
+    @Get("motorcycle/:id")
+    async findMotorcycleAd(@Param("id") id: string) {
+        return this.advertisementsService.findMotorcycleAd(+id);
     }
 
     @Patch(":id")

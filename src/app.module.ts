@@ -1,5 +1,7 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { AdvertisementImagesModule } from "./advertisement-images/advertisement-images.module";
+import { AdvertisementsModule } from "./advertisements/advertisements.module";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { env } from "./env";
@@ -23,6 +25,8 @@ import { VehiclesModule } from "./vehicles/vehicles.module";
         VehiclesModule,
         MotorcyclesModule,
         StoresModule,
+        AdvertisementsModule,
+        AdvertisementImagesModule,
     ],
     controllers: [AppController],
     providers: [AppService],

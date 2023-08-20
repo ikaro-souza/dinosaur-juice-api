@@ -1,6 +1,6 @@
 import {
     Vehicle,
-    vehicleTypes,
+    types,
     type VehicleType,
 } from "src/vehicles/entities/vehicle.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
@@ -25,9 +25,7 @@ export class Manufacturer {
     @Column("text")
     logo_url: string;
 
-    @Column("enum", {
-        enum: [vehicleTypes._def.values],
-    })
+    @Column("enum", { enum: types, enumName: "vehicle_type" })
     vehicle_type: VehicleType;
 
     @OneToMany(() => Vehicle, (vehicle) => vehicle.manufacturer)

@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Advertisement } from "src/advertisements/entities/advertisement.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("stores")
 export class Store {
@@ -22,4 +23,7 @@ export class Store {
 
     @Column("char", { length: 11 })
     phone_number: string;
+
+    @OneToMany(() => Advertisement, (advertisement) => advertisement.store)
+    advertisements: Advertisement[];
 }

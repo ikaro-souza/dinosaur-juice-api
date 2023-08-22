@@ -45,6 +45,16 @@ export class MotorcycleAdDto {
     name: string;
 
     @Expose()
+    year: number;
+
+    @Expose()
+    model: number;
+
+    @Expose()
+    @Transform(({ value }) => Number(value))
+    displacement: number;
+
+    @Expose()
     manufacturer: string;
 
     @Expose()

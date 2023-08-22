@@ -3,14 +3,18 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { DataSource, Repository } from "typeorm";
 import { CreateAdvertisementDto } from "./dto/create-advertisement.dto";
 import { UpdateAdvertisementDto } from "./dto/update-advertisement.dto";
-import { Advertisement } from "./entities/advertisement.entity";
+import {
+    VehicleAdvertisementsDto,
+    vehicleAdvertisementsDto,
+} from "./dto/vehicle-advertisements.dto";
 import { MotorcycleAd } from "./entities/motorcycle-ad.entity";
+import { VehicleAdsView } from "./entities/vehicle-ads-view.entity";
 
 @Injectable()
 export class AdvertisementsService {
     constructor(
-        @InjectRepository(Advertisement)
-        private readonly advertisementsRepository: Repository<Advertisement>,
+        @InjectRepository(VehicleAdsView)
+        private readonly advertisementsRepository: Repository<VehicleAdsView>,
         private readonly dataSource: DataSource,
     ) {}
 
@@ -18,25 +22,9 @@ export class AdvertisementsService {
         return "This action adds a new advertisement";
     }
 
-    findAll() {
-        return this.advertisementsRepository.find({
-            relations: {
-                store: true,
-                vehicle: true,
-                images: true,
-            },
-        });
-    }
-
-    findOne(id: number) {
-        return this.advertisementsRepository.findOne({
-            relations: {
-                store: true,
-                vehicle: true,
-                images: true,
-            },
-            where: { id: id },
-        });
+    async findAll(): Promise<VehicleAdvertisementsDto> {
+        const rows = await this.advertisementsRepository.find();
+        return vehicleAdvertisementsDto.parse(rows);
     }
 
     async findMotorcycleAd(id: number) {

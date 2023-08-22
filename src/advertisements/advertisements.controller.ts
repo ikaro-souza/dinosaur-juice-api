@@ -27,11 +27,6 @@ export class AdvertisementsController {
         return this.advertisementsService.findAll();
     }
 
-    @Get(":id")
-    findOne(@Param("id") id: string) {
-        return this.advertisementsService.findOne(+id);
-    }
-
     @Get("motorcycle/:id")
     async findMotorcycleAd(@Param("id") id: string) {
         return this.advertisementsService.findMotorcycleAd(+id);

@@ -1,5 +1,11 @@
+import { Expose, Transform } from "class-transformer";
 import { z } from "zod";
-import { vehicleColors, vehicleStates } from "../entities/advertisement.entity";
+import {
+    VehicleColor,
+    VehicleState,
+    vehicleColors,
+    vehicleStates,
+} from "../entities/advertisement.entity";
 
 export const vehicleAdvertisementsDto = z
     .object({
@@ -24,3 +30,57 @@ export const vehicleAdvertisementsDto = z
     .array();
 
 export type VehicleAdvertisementsDto = z.infer<typeof vehicleAdvertisementsDto>;
+
+export class VehicleAdsDto {
+    @Expose()
+    id: number;
+
+    @Expose()
+    created_at: Date;
+
+    @Expose()
+    updated_at: Date;
+
+    @Expose()
+    deleted_at: Date | null;
+
+    @Expose()
+    @Transform(({ value }) => Number(value))
+    value: number;
+
+    @Expose()
+    plate_last_digit: string;
+
+    @Expose()
+    mileage: number;
+
+    @Expose()
+    primary_color: VehicleColor;
+
+    @Expose()
+    secondary_color: VehicleColor | null;
+
+    @Expose()
+    vehicle_state: VehicleState;
+
+    @Expose()
+    city: string;
+
+    @Expose()
+    name: string;
+
+    @Expose()
+    year: number;
+
+    @Expose()
+    model: number;
+
+    @Expose()
+    manufacturer: string;
+
+    @Expose()
+    display_name: string;
+
+    @Expose()
+    images: string[];
+}

@@ -1,12 +1,11 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import { plainToClass } from "class-transformer";
 import { DataSource, Repository } from "typeorm";
 import { CreateAdvertisementDto } from "./dto/create-advertisement.dto";
+import { MotorcycleAdDto } from "./dto/motorcycle-ad.dto";
 import { UpdateAdvertisementDto } from "./dto/update-advertisement.dto";
-import {
-    VehicleAdvertisementsDto,
-    vehicleAdvertisementsDto,
-} from "./dto/vehicle-advertisements.dto";
+import { VehicleAdsDto } from "./dto/vehicle-advertisements.dto";
 import { MotorcycleAd } from "./entities/motorcycle-ad.entity";
 import { VehicleAdsView } from "./entities/vehicle-ads-view.entity";
 
@@ -22,16 +21,16 @@ export class AdvertisementsService {
         return "This action adds a new advertisement";
     }
 
-    async findAll(): Promise<VehicleAdvertisementsDto> {
+    async findAll(): Promise<VehicleAdsDto[]> {
         const rows = await this.advertisementsRepository.find();
-        return vehicleAdvertisementsDto.parse(rows);
+        return rows.map((row) => plainToClass(VehicleAdsDto, row));
     }
 
     async findMotorcycleAd(id: number) {
         const data = await this.dataSource.query<MotorcycleAd[]>(
             `select * from get_motorcycle_ad (${id})`,
         );
-        return data[0];
+        return plainToClass(MotorcycleAdDto, data[0]);
     }
 
     update(id: number, updateAdvertisementDto: UpdateAdvertisementDto) {

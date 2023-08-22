@@ -6,7 +6,6 @@ import { CreateAdvertisementDto } from "./dto/create-advertisement.dto";
 import { MotorcycleAdDto } from "./dto/motorcycle-ad.dto";
 import { UpdateAdvertisementDto } from "./dto/update-advertisement.dto";
 import { VehicleAdsDto } from "./dto/vehicle-advertisements.dto";
-import { MotorcycleAd } from "./entities/motorcycle-ad.entity";
 import { VehicleAdsView } from "./entities/vehicle-ads-view.entity";
 
 @Injectable()

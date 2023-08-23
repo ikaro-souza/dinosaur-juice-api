@@ -33,15 +33,19 @@ export type VehicleAdvertisementsDto = z.infer<typeof vehicleAdvertisementsDto>;
 
 export class VehicleAdsDto {
     @Expose()
+    @Transform(({ value }) => Number(value))
     id: number;
 
     @Expose()
+    @Transform(({ value }) => new Date(value))
     created_at: Date;
 
     @Expose()
+    @Transform(({ value }) => new Date(value))
     updated_at: Date;
 
     @Expose()
+    @Transform(({ value }) => (value ? new Date(value) : null))
     deleted_at: Date | null;
 
     @Expose()
